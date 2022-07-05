@@ -72,6 +72,10 @@ body>main>ul>li>p:nth-child(3) {
     background: radial-gradient(circle, rgba(241, 255, 254, 0.352) 0%, rgba(148, 171, 233, 1) 100%);
 }
 
+ul{
+    padding:0;
+}
+
 input {
     text-align: justify;
 }

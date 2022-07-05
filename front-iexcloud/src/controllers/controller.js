@@ -16,7 +16,6 @@ const action = function (action, symbol) {
             break;
     }
 }
-window.action = action;
 
 function refresh(symbol) {
     let stockQuote = `${baseUrl}stock?symbol=${symbol}`;
@@ -44,7 +43,6 @@ function removeItemListLocalStorage(symbol) {
     data = data.filter(item => item.symbol !== symbol)
     data = JSON.stringify(data);
     localStorage.setItem("search", data);
-
 }
 
 function find() {
@@ -110,4 +108,5 @@ function createNewList(list) {
     ul.parentElement.replaceChild(newUl, ul);
 }
 
+window.action = action;
 window.onload = loadSearchesLocalStore();
