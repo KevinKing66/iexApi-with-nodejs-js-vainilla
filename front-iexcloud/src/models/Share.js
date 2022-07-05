@@ -1,4 +1,4 @@
-class Share {
+export default class Share {
 
     avgTotalVolume;
     calculationPrice;
@@ -117,7 +117,4 @@ class Share {
         this.isUSMarketOpen = isUSMarketOpen;
 
     };
-};
-module.exports = { 
-    Share 
 };
