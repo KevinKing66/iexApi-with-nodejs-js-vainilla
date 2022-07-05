@@ -2,7 +2,7 @@ import  imgComponent from "./imgComponent.js";
 import  pComponent from "./pComponent.js";
 import  divComponent from "./divComponent.js";
 import spanComponent from "./spanComponent.js";
-export default function liCreate(data) {
+export default function liComponent(data) {
 
     let li = document.createElement("li");
     li.setAttribute("id", data.symbol);
