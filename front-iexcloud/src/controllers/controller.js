@@ -1,8 +1,13 @@
 import liComponent from "../components/liComponent.js";
+import Services  from "../service/Services.js";
 const baseUrl = "http://localhost:3000/";
 
 let button = document.querySelector("body > nav > button");
 button.addEventListener("click", find);
+ if(true){
+    let data = await Services.findShare("aapl");
+    console.log(data)
+ }
 
 const action = function (action, symbol) {
     switch (action) {
@@ -17,14 +22,10 @@ const action = function (action, symbol) {
     }
 }
 
-function refresh(symbol) {
-    let stockQuote = `${baseUrl}stock?symbol=${symbol}`;
-    if (symbol !== "") {
-        fetch(stockQuote)
-            .then(res => res.json())
-            .then(data => add(data))
-            .catch(error => console.log('error', error));
-    };
+async function refresh(symbol) {
+    let data = await Services.findShare(symbol);
+    console.log(data);
+    add(data);
 }
 
 function remove(item) {
@@ -45,17 +46,14 @@ function removeItemListLocalStorage(symbol) {
     localStorage.setItem("search", data);
 }
 
-function find() {
+async function find() {
     let symbol = document.getElementById("symbol").value;
     if (symbol === "") {
         return;
     }
-    let stockQuote = `${baseUrl}stock?symbol=${symbol}`;
-    fetch(stockQuote)
-        .then(res => res.json())
-        .then(data => add(data))
-        .catch(error => console.log('error', error));
-    console.log(symbol);
+    let data = await Services.findShare(symbol);
+    console.log(data);
+    add(data);
 }
 
 function add(data) {
