@@ -55,10 +55,8 @@ function httpsGet(url) {
             data += chunk;
         });
 
-        host = res.req.protocol + res.req.host;
         path = res.req.path;
-        url = new URL(path, host);
-        symbol = getSymbol(url);
+        symbol = getSymbol(path);
 
         res.on('close', () => {
             data = JSON.parse(data);
@@ -77,7 +75,6 @@ function getData(symbol) {
 }
 
 function getSymbol(path) {
-    path = '/stable/stock/aapl/quote';
     array = path.split("/");
     return array[3];
 }
