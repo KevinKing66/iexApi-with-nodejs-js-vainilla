@@ -1,13 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@1,800&family=Comfortaa:wght@300&family=Montserrat:wght@300&family=Prompt:ital,wght@1,100&family=Roboto:wght@100&display=swap');
+
 * {
     text-align: center;
     font-family: 'Alumni Sans', sans-serif;
     font-size: 15px;
-}
-
-body>main>ul>li>p,
-.options {
-    height: 2rem;
 }
 
 svg,
@@ -17,13 +13,13 @@ img {
 
 options>svg {
     margin: 5px;
-    max-width:calc(10vw-20px);
+    max-width: calc(10vw-20px);
 }
 
 svg {
     width: 1rem;
     border-left: 2px solid transparent;
-    border-right: 2px solid transparent; 
+    border-right: 2px solid transparent;
     margin: auto;
 }
 
@@ -45,15 +41,19 @@ svg {
 
 body>main>ul>li>p {
     border-left: 1px solid rgb(3, 132, 111);
+    margin: auto 0;
 }
 
 body>main>ul>li>p:nth-child(3) {
     border-right: 1px solid rgb(3, 132, 111);
 }
-.options{
+
+.options {
+    height: max-content;
     min-width: 3rem;
     margin: auto;
 }
+
 .positive {
     color: greenyellow;
 }
@@ -74,4 +74,8 @@ body>main>ul>li>p:nth-child(3) {
 
 input {
     text-align: justify;
+}
+
+img {
+    max-width: 3rem;
 }

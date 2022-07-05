@@ -48,7 +48,7 @@ function addObjectInList(data) {
     li.setAttribute("class", "item")
 
     img = document.createElement("img");
-    img.setAttribute("src", data.src);
+    img.setAttribute("src", src=`https://storage.googleapis.com/iexcloud-hl37opg/api/logos/${data.symbol}.png`);
     li.appendChild(img);
 
     companyName = data.companyName;
@@ -58,7 +58,7 @@ function addObjectInList(data) {
     li.appendChild(p);
 
     p = document.createElement("p");
-    price = data.open;
+    price = data.latestPrice;
     currency = data.currency;
     changeType = changeValue(data);
     p.innerHTML = `${price} ${currency} `;
@@ -82,7 +82,7 @@ function addObjectInList(data) {
 }
 
 function changeValue(data) {
-    priceDiferencce = data.latestPrice - data.open;
+    priceDiferencce = data.latestPrice - data.iexOpen;
     changeType = document.createElement("span")
     if (priceDiferencce < 0) {
         changeType.innerHTML = "<span class='negative'>⩛</span>";
