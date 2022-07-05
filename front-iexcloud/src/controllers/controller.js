@@ -4,8 +4,8 @@ const baseUrl = "http://localhost:3000/";
 let button = document.querySelector("body > nav > button");
 button.addEventListener("click", find);
 
-const action = function(action, symbol){
-    switch(action){
+const action = function (action, symbol) {
+    switch (action) {
         case "delete":
             remove(symbol);
             break;
@@ -18,13 +18,13 @@ const action = function(action, symbol){
 }
 window.action = action;
 
-function refresh (symbol) {
+function refresh(symbol) {
     let stockQuote = `${baseUrl}stock?symbol=${symbol}`;
-    if(symbol !== ""){
-    fetch(stockQuote)
-        .then(res => res.json())
-        .then(data => add(data))
-        .catch(error => console.log('error', error));
+    if (symbol !== "") {
+        fetch(stockQuote)
+            .then(res => res.json())
+            .then(data => add(data))
+            .catch(error => console.log('error', error));
     };
 }
 
@@ -38,23 +38,18 @@ function removeItemList(item) {
     element.remove();
 }
 
-function removeItemListLocalStorage(item) {
+function removeItemListLocalStorage(symbol) {
     let data = localStorage.getItem("search");
     data = JSON.parse(data);
-    for (let i = 0; i < data.length; i++) {
-        if (data[i].symbol === item) {
-            data = data.slice(i);
-            console.log(data);
-            data = JSON.stringify(data);
-            localStorage.setItem("search", data);
-            break;
-        }
-    }
+    data = data.filter(item => item.symbol !== symbol)
+    data = JSON.stringify(data);
+    localStorage.setItem("search", data);
+
 }
 
 function find() {
     let symbol = document.getElementById("symbol").value;
-    if(symbol === ""){
+    if (symbol === "") {
         return;
     }
     let stockQuote = `${baseUrl}stock?symbol=${symbol}`;
@@ -96,7 +91,7 @@ function addToList(data) {
 
 function loadSearchesLocalStore() {
     let data = localStorage.getItem("search");
-    if(data == null){
+    if (data == null) {
         return;
     }
     if (data) {
