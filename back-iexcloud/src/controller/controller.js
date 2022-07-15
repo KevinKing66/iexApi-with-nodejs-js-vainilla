@@ -7,14 +7,7 @@ module.exports = http.createServer((req, res) => {
     const reqUrl = url.parse(req.url, true);
 
 
-    if (reqUrl.pathname == '/test' && req.method === 'POST') {
-        console.log('Request Type:' +
-            req.method + ' Endpoint: ' +
-            reqUrl.pathname);
-
-        service.testRequest(req, res);
-
-    } else if (reqUrl.pathname == '/stock') {
+    if (reqUrl.pathname == '/stock'&& (req.method === 'POST' || req.method === 'GET')) {
         console.log('Request Type:' +
             req.method + ' Endpoint: ' +
             reqUrl.pathname);
@@ -24,5 +17,7 @@ module.exports = http.createServer((req, res) => {
         console.log('Request Type:' +
             req.method + ' Invalid Endpoint: ' +
             reqUrl.pathname);
+        res.writeHead(404, { 'Content-Type': 'text/html' });
+        res.end("Router wasn´t found")
     }
 });
