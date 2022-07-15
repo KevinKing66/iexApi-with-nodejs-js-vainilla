@@ -19,7 +19,7 @@ module.exports = http.createServer((req, res) => {
             req.method + ' Endpoint: ' +
             reqUrl.pathname);
 
-        service.getData(req, res);
+        service.getDataService(req, res);
     } else {
         console.log('Request Type:' +
             req.method + ' Invalid Endpoint: ' +
